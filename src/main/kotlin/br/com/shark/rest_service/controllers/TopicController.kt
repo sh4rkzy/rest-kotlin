@@ -1,5 +1,6 @@
 package br.com.shark.rest_service.controllers
 import br.com.shark.rest_service.dto.CreateDto
+import br.com.shark.rest_service.dto.TopicsResponse
 import br.com.shark.rest_service.models.Topics
 import br.com.shark.rest_service.services.TopicsService
 import org.springframework.web.bind.annotation.*
@@ -10,11 +11,12 @@ import org.springframework.web.bind.annotation.*
 class TopicController(private val service: TopicsService) {
 
     @GetMapping
-    fun getTopics(): List<Topics> {
+    fun getTopics(): List<TopicsResponse> {
         return service.list()
     }
+
     @GetMapping("/{id}")
-    fun getTopic(@PathVariable id: Long): Topics {
+    fun getTopic(@PathVariable id: Long): TopicsResponse {
        return service.get_filter(id)
     }
 
