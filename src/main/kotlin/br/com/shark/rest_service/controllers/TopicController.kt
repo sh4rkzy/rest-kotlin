@@ -1,28 +1,25 @@
 package br.com.shark.rest_service.controllers
-
-import br.com.shark.rest_service.models.Curso
+import br.com.shark.rest_service.dto.CreateDto
 import br.com.shark.rest_service.models.Topics
-import br.com.shark.rest_service.models.Usuario
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
-import java.util.*
+import br.com.shark.rest_service.services.TopicsService
+import org.springframework.web.bind.annotation.*
+
 
 @RestController
 @RequestMapping("/topics")
-class TopicController {
+class TopicController(private val service: TopicsService) {
 
     @GetMapping
     fun getTopics(): List<Topics> {
+        return service.list()
+    }
+    @GetMapping("/{id}")
+    fun getTopic(@PathVariable id: Long): Topics {
+       return service.get_filter(id)
+    }
 
-        val topicos = Topics(
-            title = "Hello World",
-            message = "Curso ai231312",
-            curso = Curso(
-                nome = "Koltin",
-                categoria = "Programação",
-            ),
-        )
-        return Arrays.asList(topicos)
+    @PostMapping
+    fun postTopic(@RequestBody dto: CreateDto) {
+        return service.new_func(dto)
     }
 }
