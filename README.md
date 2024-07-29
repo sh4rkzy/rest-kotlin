@@ -181,20 +181,6 @@ Certifique-se de que o JDK 17 está configurado no seu Maven:
 
 ```
 
-
-## Docker
-
-Para executar o Dockerfile, basta usar o seguinte comando:
-
-```bash
-docker build -t nome-da-sua-escolha/rest-service:tag .
-```
-
-
-Claro! Aqui está a seção ajustada em Markdown para incluir o uso do Docker e do Docker Compose:
-
-markdown
-Copiar código
 ## Docker
 
 Para executar o Dockerfile, basta usar o seguinte comando:
