@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    container_name: "rest-kotlin"
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '512M'
